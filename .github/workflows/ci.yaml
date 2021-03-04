@@ -21,18 +21,18 @@
         uses: actions/checkout@v2
       - name: Setup Loft
         run: |
-          curl -sfLo /usr/local/bin/loft https://github.com/loft-sh/loft/releases/download/v1.7.2/loft-linux-amd64
-          chmod +x /usr/local/bin/loft
+          curl -sfLo ./loft https://github.com/loft-sh/loft/releases/download/v1.7.2/loft-linux-amd64
+          chmod +x ./loft
 
       - name: Login to Loft instance
         run: |
-          /usr/local/bin/loft login --insecure $LOFT_URL --username $LOFT_USERNAME --access-key $LOFT_ACCESS_KEY
+          ./loft login --insecure $LOFT_URL --username $LOFT_USERNAME --access-key $LOFT_ACCESS_KEY
 
 
       - name: Create virtual cluster
         run: |
-          /usr/local/bin/loft create vcluster $VCLUSTERNAME
+          ./loft create vcluster $VCLUSTERNAME
 
       - name: Loft use vcluster
         run: |
-          /usr/local/bin/loft use vcluster $VCLUSTERNAME
+          ./loft use vcluster $VCLUSTERNAME
