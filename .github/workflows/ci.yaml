@@ -20,7 +20,7 @@
       - name: Checkout
         uses: actions/checkout@v2
       - name: Setup Loft
-        run: |-
+        run: |
           curl -sfLo /usr/local/bin/loft https://github.com/loft-sh/loft/releases/download/v1.7.2/loft-linux-amd64
           chmod +x /usr/local/bin/loft
 
