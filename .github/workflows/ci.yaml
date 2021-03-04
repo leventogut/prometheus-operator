@@ -36,3 +36,7 @@
       - name: Loft use vcluster
         run: |
           ./loft use vcluster $VCLUSTERNAME
+
+      - name: Loft delete vcluster
+        run: |
+          ./loft delete vcluster $VCLUSTERNAME
