@@ -31,3 +31,7 @@
       - name: Create virtual cluster
         run: |
           /usr/local/bin/loft create vcluster $VCLUSTERNAME
+
+      - name: Loft use vcluster
+        run: |
+          /usr/local/bin/loft use vcluster $VCLUSTERNAME
