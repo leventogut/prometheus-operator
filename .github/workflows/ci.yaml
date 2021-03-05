@@ -48,7 +48,7 @@
 
       - name: Get all pods
         run: |
-          ./kubectl --insecure-skip-tls-verify=true --kubeconfig='.kube/config' get all --all-namespaces
+          ./kubectl --insecure-skip-tls-verify=true --kubeconfig='~/.kube/config' get all --all-namespaces
 
       - name: Loft delete vcluster
         run: |
