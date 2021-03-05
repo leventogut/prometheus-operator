@@ -45,17 +45,17 @@
 
       - name: Loft use vcluster
         run: |
-          mkdir .kube
-          touch .kube/config
-          ./loft use vcluster $VCLUSTERNAME --print --silent > .kube/config
+          mkdir ~/.kube
+          touch ~/.kube/config
+          ./loft use vcluster $VCLUSTERNAME --print --silent > ~/.kube/config
 
       - name: Get all pods
         run: |
-          ./kubectl --kubeconfig='.kube/config' get all --all-namespaces
+          ./kubectl --kubeconfig='~/.kube/config' get all --all-namespaces
 
       - name: run tests
         run: |
-          - make test-e2e
+          make test-e2e
 
       - name: Cleanup the cluster (Loft delete vcluster)
         run: |
