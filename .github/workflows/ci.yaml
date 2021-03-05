@@ -10,7 +10,7 @@
     LOFT_URL: 'https://loft.l3v.co'
     LOFT_USERNAME: 'admin'
     LOFT_ACCESS_KEY: ${{ secrets.LOFT_ACCESS_KEY }}
-    VCLUSTERNAME: 'ci-${{ GITHUB_SHA }}'
+    VCLUSTERNAME: 'ci'
   jobs:
     setup-test-publish-deploy:
       name: Setup, test, publish, deploy
