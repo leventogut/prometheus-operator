@@ -45,8 +45,6 @@
 
       - name: Loft use vcluster
         run: |
-          mkdir ~/.kube
-          touch ~/.kube/config
           ./loft use vcluster $VCLUSTERNAME --print --silent > ~/.kube/config
 
       - name: Get all pods
