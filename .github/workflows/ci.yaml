@@ -32,6 +32,9 @@
         run: |
           ./loft login --insecure $LOFT_URL --username $LOFT_USERNAME --access-key $LOFT_ACCESS_KEY
 
+      - name: Loft delete vcluster
+        run: |
+          ./loft delete vcluster $VCLUSTERNAME
 
       - name: Create virtual cluster
         run: |
@@ -43,6 +46,7 @@
       - name: Get all pods
         run: |
           ./kubectl get all --all-namespaces
+
       - name: Loft delete vcluster
         run: |
           ./loft delete vcluster $VCLUSTERNAME
