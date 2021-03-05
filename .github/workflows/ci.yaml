@@ -10,7 +10,7 @@
     LOFT_URL: 'https://loft.l3v.co'
     LOFT_USERNAME: 'admin'
     LOFT_ACCESS_KEY: ${{ secrets.LOFT_ACCESS_KEY }}
-    VCLUSTERNAME: 'ci'
+    VCLUSTERNAME: 'ci-${{ env.GITHUB_SHA }}'
   jobs:
     setup-test-publish-deploy:
       name: Setup, test, publish, deploy
@@ -49,7 +49,7 @@
 
       - name: Get all pods
         run: |
-          ./kubectl --kubeconfig='./kube_config' get all --all-namespaces
+          ./kubectl --kubeconfig='./kube_config' get po --all-namespaces
 
       - name: run tests
         run: |
