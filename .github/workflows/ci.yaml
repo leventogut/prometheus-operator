@@ -1,4 +1,4 @@
-  name: Run end to end tests for prometheus-operator using a virtual kubernetes cluster
+  name: Run end to end tests using a virtual kubernetes cluster
 
   on:
     push:
@@ -43,14 +43,14 @@
         run: |
           ./loft create vcluster $VCLUSTERNAME
 
-      - name: Loft use vcluster
-        run: |
-          ./loft use vcluster $VCLUSTERNAME --print --silent > kube_config
+#      - name: Loft use vcluster
+#        run: |
+#          ./loft use vcluster $VCLUSTERNAME --print --silent > kube_config
 
-      - name: Get all pods
+      - name: Get all objects
         run: |
-          ./kubectl --insecure-skip-tls-verify=true --kubeconfig='kube_config' get all --all-namespaces
+          ./kubectl get all --all-namespaces
 
-      - name: Loft delete vcluster
+      - name: Cleanup (Loft delete vcluster)
         run: |
           ./loft delete vcluster $VCLUSTERNAME
