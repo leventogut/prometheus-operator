@@ -7,7 +7,7 @@
 
   env:
     LOFT_VERSION: '1.7.2'
-    LOFT_URL: 'https://loft.l3v.co'
+    LOFT_URL: 'https://loft.l3v.co/'
     LOFT_USERNAME: 'admin'
     LOFT_ACCESS_KEY: ${{ secrets.LOFT_ACCESS_KEY }}
     VCLUSTERNAME: 'ci'
@@ -27,7 +27,7 @@
 
       - name: Setup Loft
         run: |
-          curl -sfLo ./loft "https://github.com/loft-sh/loft/releases/download/v$LOFT_VERSION/loft-linux-amd64"
+          curl -sfLo ./loft https://github.com/loft-sh/loft/releases/download/v$LOFT_VERSION/loft-linux-amd64
           chmod +x ./loft
 
       - name: Login to Loft instance
@@ -35,7 +35,6 @@
           ./loft login --insecure $LOFT_URL --username $LOFT_USERNAME --access-key $LOFT_ACCESS_KEY
 
       - name: Loft delete vcluster
-        continue-on-error: true
         run: |
           ./loft delete vcluster $VCLUSTERNAME
 
@@ -49,12 +48,8 @@
 
       - name: Get all pods
         run: |
-          ./kubectl --kubeconfig='kube_config' get nodes
+          ./kubectl --insecure-skip-tls-verify=true --kubeconfig='kube_config' get all --all-namespaces
 
-      - name: run tests
-        run: |
-          echo "tests"
-
-      - name: Cleanup the cluster (Loft delete vcluster)
+      - name: Loft delete vcluster
         run: |
           ./loft delete vcluster $VCLUSTERNAME
