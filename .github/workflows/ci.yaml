@@ -49,7 +49,7 @@
 
       - name: Get all pods
         run: |
-          ./kubectl --kubeconfig='~/.kube/config' get all --all-namespaces
+          ./kubectl --kubeconfig='.kube/config' get all --all-namespaces
 
       - name: run tests
         run: |
