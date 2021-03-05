@@ -44,11 +44,15 @@
 
       - name: Loft use vcluster
         run: |
-          ./loft use vcluster $VCLUSTERNAME --print --silent > kube_config
+          ./loft use vcluster $VCLUSTERNAME
 
       - name: Get all pods
+        run: |
+          ./kubectl get all --all-namespaces
+
+      - name: run tests
         run: |-
-          ./kubectl --kubeconfig='kube_config' get all --all-namespaces
+          - make test-e2e
 
       - name: Loft delete vcluster
         run: |
