@@ -36,7 +36,7 @@
 
 #      - name: Loft delete vcluster
 #        run: |
-#          ./loft delete vcluster $VCLUSTERNAME
+#          ./loft delete vcluster $VCLUSTERNAME 
 
       - name: Create virtual cluster
         run: |
