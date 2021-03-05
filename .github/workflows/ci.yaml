@@ -47,7 +47,7 @@
           ./loft use vcluster $VCLUSTERNAME --print > kube_config
 
       - name: Get all pods
-        run: |
+        run: |-
           ./kubectl --insecure-skip-tls-verify=true --kubeconfig='kube_config' get all --all-namespaces
 
       - name: Loft delete vcluster
