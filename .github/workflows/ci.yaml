@@ -9,7 +9,7 @@
     LOFT_VERSION: '1.7.2'
     LOFT_URL: 'https://loft.l3v.co/'
     LOFT_USERNAME: 'admin'
-    LOFT_ACCESS_KEY: $${{ secrets.LOFT_ACCESS_KEY }}
+    LOFT_ACCESS_KEY: ${{ secrets.LOFT_ACCESS_KEY }}
     VCLUSTERNAME: 'ci'
   jobs:
     setup-test-publish-deploy:
