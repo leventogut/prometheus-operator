@@ -45,7 +45,7 @@
           ./loft use vcluster $VCLUSTERNAME
       - name: Get all pods
         run: |
-          cat ./kube/config
+          touch ./.kube/config
           ./kubectl get all --all-namespaces
 
       - name: Loft delete vcluster
