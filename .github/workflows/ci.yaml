@@ -19,6 +19,9 @@
       steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Setup kubectl
+        run: |
+          curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
       - name: Setup Loft
         run: |
           curl -sfLo ./loft https://github.com/loft-sh/loft/releases/download/v$LOFT_VERSION/loft-linux-amd64
@@ -36,7 +39,9 @@
       - name: Loft use vcluster
         run: |
           ./loft use vcluster $VCLUSTERNAME
-
+      - name: Get all pods
+        run: |
+          ./kubectl get all --all-namespaces
       - name: Loft delete vcluster
         run: |
           ./loft delete vcluster $VCLUSTERNAME
