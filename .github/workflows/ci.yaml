@@ -42,11 +42,12 @@
 
       - name: Loft use vcluster
         run: |
-          ./loft use vcluster $VCLUSTERNAME
-      - name: Get all pods
-        run: |
           mkdir .kube
           touch ./.kube/config
+          ./loft use vcluster $VCLUSTERNAME
+
+      - name: Get all pods
+        run: |
           ./kubectl get all --all-namespaces
 
       - name: Loft delete vcluster
