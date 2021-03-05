@@ -34,9 +34,10 @@
         run: |
           ./loft login --insecure $LOFT_URL --username $LOFT_USERNAME --access-key $LOFT_ACCESS_KEY
 
-#      - name: Loft delete vcluster
-#        run: |
-#          ./loft delete vcluster $VCLUSTERNAME 
+      - name: Loft delete vcluster
+        continue-on-error: true
+        run: |
+          ./loft delete vcluster $VCLUSTERNAME
 
       - name: Create virtual cluster
         run: |
@@ -56,6 +57,6 @@
         run: |
           - make test-e2e
 
-      - name: Loft delete vcluster
+      - name: Cleanup the cluster (Loft delete vcluster)
         run: |
           ./loft delete vcluster $VCLUSTERNAME
