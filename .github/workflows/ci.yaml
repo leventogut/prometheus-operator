@@ -43,9 +43,9 @@
         run: |
           ./loft create vcluster $VCLUSTERNAME
 
-#      - name: Loft use vcluster
-#        run: |
-#          ./loft use vcluster $VCLUSTERNAME --print --silent > kube_config
+      - name: Loft use vcluster
+        run: |
+          ./loft use vcluster $VCLUSTERNAME --print --silent
 
       - name: Get all objects
         run: |
