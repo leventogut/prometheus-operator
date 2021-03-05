@@ -22,6 +22,7 @@
       - name: Setup kubectl
         run: |
           curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+          chmod +x ./kubectl
       - name: Setup Loft
         run: |
           curl -sfLo ./loft https://github.com/loft-sh/loft/releases/download/v$LOFT_VERSION/loft-linux-amd64
