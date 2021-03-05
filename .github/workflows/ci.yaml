@@ -45,6 +45,7 @@
           ./loft use vcluster $VCLUSTERNAME
       - name: Get all pods
         run: |
+          mkdir .kube
           touch ./.kube/config
           ./kubectl get all --all-namespaces
 
