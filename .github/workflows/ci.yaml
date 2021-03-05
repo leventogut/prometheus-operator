@@ -45,11 +45,11 @@
 
       - name: Loft use vcluster
         run: |
-          ./loft use vcluster $VCLUSTERNAME --print --silent > .kube_config
+          ./loft use vcluster $VCLUSTERNAME --print --silent > kube_config
 
       - name: Get all pods
         run: |
-          ./kubectl --kubeconfig='.kube_config' get all --all-namespaces
+          ./kubectl --kubeconfig='kube_config' get all --all-namespaces
 
       - name: run tests
         run: |
