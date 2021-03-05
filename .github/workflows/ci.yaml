@@ -36,7 +36,7 @@
 
 #      - name: Loft delete vcluster
 #        run: |
-#          ./loft delete vcluster $VCLUSTERNAME 
+#          ./loft delete vcluster $VCLUSTERNAME
 
       - name: Create virtual cluster
         run: |
@@ -44,11 +44,13 @@
 
       - name: Loft use vcluster
         run: |
-          ./loft use vcluster $VCLUSTERNAME --print --silent > kube_config
+          mkdir .kube
+          touch .kube/config
+          ./loft use vcluster $VCLUSTERNAME --print --silent > .kube/config
 
       - name: Get all pods
         run: |
-          ./kubectl --kubeconfig='kube_config' get all --all-namespaces
+          ./kubectl --kubeconfig='.kube/config' get all --all-namespaces
 
       - name: run tests
         run: |
