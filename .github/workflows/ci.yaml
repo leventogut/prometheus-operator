@@ -27,7 +27,7 @@
 
       - name: Setup Loft
         run: |
-          curl -sfLo ./loft https://github.com/loft-sh/loft/releases/download/v$LOFT_VERSION/loft-linux-amd64
+          curl -sfLo ./loft "https://github.com/loft-sh/loft/releases/download/v$LOFT_VERSION/loft-linux-amd64"
           chmod +x ./loft
 
       - name: Login to Loft instance
@@ -45,11 +45,11 @@
 
       - name: Loft use vcluster
         run: |
-          ./loft use vcluster $VCLUSTERNAME --print --silent > ./kube_config
+          ./loft use vcluster $VCLUSTERNAME --print --silent > kube_config
 
       - name: Get all pods
         run: |
-          ./kubectl --kubeconfig='./kube_config' get po --all-namespaces
+          ./kubectl --kubeconfig='kube_config' get po --all-namespaces
 
       - name: run tests
         run: |
