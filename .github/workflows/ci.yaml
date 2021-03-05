@@ -21,7 +21,7 @@
         uses: actions/checkout@v2
       - name: Setup Loft
         run: |
-          curl -sfLo ./loft https://github.com/loft-sh/loft/releases/download/$LOFT_VERSION/loft-linux-amd64
+          curl -sfLo ./loft https://github.com/loft-sh/loft/releases/download/v$LOFT_VERSION/loft-linux-amd64
           chmod +x ./loft
 
       - name: Login to Loft instance
